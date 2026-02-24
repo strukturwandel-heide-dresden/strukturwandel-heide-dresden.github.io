@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<title>Strukturwandel der Dresdner Heide</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon-32x32.png">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="Analyse des Waldstrukturwandels in der Dresdner Heide mittels Satellitendaten.">
+<meta name="keywords" content="QGIS, Dresden, Heide, Waldwandel, Sentinel-2, NDVI">
+<meta name="author" content="Franziska Weiß">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<link rel="stylesheet" href="css/tooplate-style.css">
+
+<style>
+    /* Zusätzliches Inline-CSS für die fixierte Navigation */
+    .navbar-default {
+        background-color: rgba(255, 255, 255, 0.95);
+        border: none;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 10px 0;
+        transition: all 0.4s;
+    }
+    .navbar-default .navbar-brand {
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        color: #3d3d3f;
+    }
+    .navbar-default .nav li a {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    section {
+        scroll-margin-top: 80px; /* Verhindert das Überdecken der Überschriften durch das Menü */
+    }
+</style>
+
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+<div class="preloader">
+     <div class="spinner">
+          <span class="spinner-rotate"></span>
+     </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+     <div class="container">
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+               </button>
+               <a href="index.html" class="navbar-brand">Abschlussprojekt</a>
+          </div>
+
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home" class="smoothScroll">Home</a></li>
+                    <li><a href="#about" class="smoothScroll">Analyse</a></li>
+                    <li><a href="#work" class="smoothScroll">Satellitendaten</a></li>
+                    <li><a href="#interactive" class="smoothScroll">Webmap</a></li>
+                    <li><a href="#fazit" class="smoothScroll">Fazit</a></li>
+                    <li><a href="#contact" class="smoothScroll">Kontakt</a></li>
+               </ul>
+          </div>
+     </div>
+</nav>
+
+
+<div class="container">
+     <div class="row">
+          <section id="home" class="parallax-section">
+               <div class="col-md-offset-1 col-md-10 col-sm-12">
+                    <div class="home-wrapper">
+                         <h3 class="wow fadeInUp" data-wow-delay="0.4s">Abschlussprojekt<br>13.02.2026</h3>
+                         <h1 class="wow fadeInUp" data-wow-delay="0.6s">Waldstrukturwandel - Rückzug der Kiefer in der Dresdner Heide</h1>
+                         <a href="#about" class="wow fadeInUp smoothScroll arrow-btn" data-wow-delay="1s"><i class="fa fa-angle-double-down"></i></a>
+                    </div>
+               </div>
+          </section>
+     </div>
+</div>
+
+
+<section id="about" class="parallax-section">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-4 col-sm-8">
+                    <img src="images/about-image.jpg" class="wow fadeInUp img-responsive" data-wow-delay="0.2s" alt="about image">
+                    <div class="wow fadeInUp" data-wow-delay="0.4s">
+                         <h4>QGIS Desktop 3.40.13</h4>
+                         <p>Die technische Umsetzung dieses Abschlussprojekts erfolgte vollständig mit der Open-Source-Software <b>QGIS</b>.</p><br>
+                         <p>Durch den gezielten Einsatz von Open Data wurde ein Workflow geschaffen, der zeigt, wie frei verfügbare Geodaten effizient analysiert und                            visualisiert werden können.</p>
+                         <p>Projektzeit: <b>09.02. bis 13.02.2026</b></p>
+                    </div>
+                    <img src="images/qgis_logo.jpg" class="wow fadeInUp img-responsive" data-wow-delay="0.2s" alt="QGIS Logo">
+               </div>
+
+               <div class="col-md-8 col-sm-12">
+                    <div class="about-thumb">
+                         <div class="wow fadeInUp section-title" data-wow-delay="0.6s">
+                              <h3>Präzision aus dem Orbit</h3>
+                              <h2>Fernerkundung & Vegetationsanalyse</h2>
+                         </div>
+                         <div class="wow fadeInUp" data-wow-delay="0.8s">
+                              <p>In diesem Projekt wurde der Rückzug der Kiefer in der Dresdner Heide anhand von <b>Sentinel-2 Satellitenbildern</b> aus den Wintermonaten untersucht. Da es sich bei der Kiefer um einen immergrünen Nadelbaum handelt, lässt sie sich in der vegetationsarmen Winterzeit besonders gut von laubabwerfenden Baumarten unterscheiden und somit gezielt analysieren.</p>
+
+							<p>Für die Auswertung wurden <b>NDVI</b>-Daten (Normalized Difference Vegetation Index) verwendet. NDVI-Bilder geben Auskunft über den Zustand der Vegetation, indem sie Vitalität, Dichte und mögliche Stressfaktoren von Pflanzenbeständen abbilden. Sie ermöglichen es, Veränderungen der Vegetation über längere Zeiträume zu überwachen, die Vegetationsbedeckung zu kartieren sowie Flächen mit Vegetationsstress oder -schäden zu identifizieren.</p>
+
+							<p>Zur Bestimmung der <b>Vegetationsveränderungen</b> wurde zunächst ein Mittelwert der NDVI-Daten aus den letzten fünf Jahren mithilfe des QGIS Rasterrechners berechnet. Dieser Mittelwert wurde anschließend von einem Referenzdatensatz aus dem Jahr 2015 subtrahiert, um räumliche Veränderungen in der Vegetationsstruktur und insbesondere im Kiefernbestand sichtbar zu machen.</p>
+
+							<p>Im Rahmen der Kartierung wurden Waldflächen ab einer Mindestgröße von 500 m² klassifiziert. Größere zusammenhängende Bereiche mit besonders ausgeprägten Veränderungen wurden als Hotspots definiert und ab einer Fläche von 4.000 m² als Punktlayer dargestellt.</p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+<section id="work" class="parallax-section">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-12 col-sm-12">
+                    <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+                         <h2>Analyse der Satellitendaten</h2>
+                         <p>Die Sentinel-2-Aufnahmen machen den Waldwandel unmittelbar sichtbar. Im direkten Vergleich zwischen dem Referenzjahr 2015 und aktuellen Aufnahmen lassen sich die strukturellen Veränderungen in der Dresdner Heide präzise nachvollziehen. Die Gegenüberstellung zeigt Echtfarben-Bilder sowie NDVI-Visualisierungen aus der winterlichen Vegetationsruhe. Besonders hervorzuheben ist die <b>NDVI-Analyse des 5-Jahres-Durchschnitts</b>: Hier wurden gezielt Flächen ab einer Größe von <b>500 m²</b> kartiert, deren NDVI-Index <b>unter 0,6</b> liegt, um Vitalitätsverluste und den Rückgang der Kiefernbestände exakt zu lokalisieren.</p>
+                    </div>
+               </div>
+
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.4s">
+                    <div class="work-thumb">
+                         <a href="images/sentinel_tc_2015.jpg" class="image-popup">
+                              <img src="images/sentinel_tc_2015.jpg" class="img-responsive" alt="Winter 2015">
+                         </a>
+                    </div>
+                   <h4>Ausschnitt Dresdner Heide </b> True Color 31.12.2015</h4>
+               </div>
+
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.6s">
+                    <div class="work-thumb">
+                         <a href="images/sentinel_tc_2025.jpg" class="image-popup">
+                              <img src="images/sentinel_tc_2025.jpg" class="img-responsive" alt="Winter 2025">
+                         </a>
+                    </div>
+                    <h4>Ausschnitt Dresdner Heide </b> True Color 18.12.2025</h4>
+               </div>
+
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.8s">
+                    <div class="work-thumb">
+                         <a href="images/sentinel_ndvi_2015.jpg" class="image-popup">
+                              <img src="images/sentinel_ndvi_2015.jpg" class="img-responsive" alt="NDVI 2015">
+                         </a>
+                    </div>
+                    <h4>Ausschnitt Dresdner Heide </b> NDVI 31.12.2015</h4>
+               </div>
+
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.8s">
+                    <div class="work-thumb">
+                         <a href="images/sentinel_ndvi_durchschnitt.jpg" class="image-popup">
+                              <img src="images/sentinel_ndvi_durchschnitt.jpg" class="img-responsive" alt="Ø NDVI 5 Jahre">
+                         </a>
+                    </div>
+                    <h4>Ausschnitt Dresdner Heide </b>NDVI Ø der letzten 5 Jahre</h4>
+               </div>
+          </div>
+     </div>
+</section>
+
+<section id="interactive" class="parallax-section">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-12 col-sm-12">
+                    <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+                         <h2>Interaktive Analyse: Waldwandel im Detail</h2>
+                         <p>Nutze die interaktive Steuerung, um zwischen Sentinel-2-Daten und den Analyseergebnissen zu navigieren. Die Hotspots (ab einer Fläche von 4.000 m²) liefern per Klick spezifische Daten zu den <b>klassifizierten Flächengrößen</b> und dokumentieren so das Ausmaß der Veränderung in der Heide. Ab einer höheren Zoomstufe werden die Waldflächen ab einer Mindestgröße von 500 m² sichtbar und liefern ebenso per Klick spezifische Daten zu den klassifizierten Flächengrößen.</p>
+                    </div>
+               </div>
+
+               <div class="col-md-12 col-sm-12">
+                    <div class="wow fadeInUp" data-wow-delay="0.6s">
+                         <iframe src="webmap/qgis2web_abschlussprojekt/" title="QGIS Karte" loading="lazy" style="width:100%; height:600px; border:none; border-radius:5px;"></iframe>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+<section id="fazit" class="parallax-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+                    <h2>Fazit</h2>
+                    <p>Die Analyse der Satellitendaten verdeutlicht einen messbaren Rückgang der Vitalität in der Dresdner Heide. Das <b>Balkendiagramm</b> zeigt im direkten Vergleich, dass die Fläche mit gesunder Vegetation (NDVI >= 0,6) vom Referenzwinter 2015 bis zum Mittelwert der letzten fünf Jahre deutlich abgenommen hat. Dieser Trend wird durch das <b>Kreisdiagramm</b> quantifiziert: Ein <b>Verlust von 13 %</b> entspricht einem Rückgang an gesunder Vegetationsfläche um insgesamt <b>227 Hektar</b>. Diese Zahlen belegen eindrucksvoll den fortschreitenden Strukturwandel und den Rückzug der Kiefer im Untersuchungsgebiet.</p>
+                </div>
+            </div>
+
+            <div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.4s">
+                <div class="work-thumb">
+                    <a href="images/Balkendiagramm.jpg" class="image-popup">
+                        <img src="images/Balkendiagramm.jpg" class="img-responsive" alt="Balkendiagramm">
+                    </a>
+                </div>
+                <h4 class="text-center">Flächenanteile (km²)</h4>
+            </div>
+
+            <div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.6s">
+                <div class="work-thumb">
+                    <a href="images/Kreisdiagramm.jpg" class="image-popup">
+                        <img src="images/Kreisdiagramm.jpg" class="img-responsive" alt="Kreisdiagramm">
+                    </a>
+                </div>
+                <h4 class="text-center">Verlustanteil</h4>
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+                <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+                    <p style="margin-top: 80px;"><b>Quellenangaben</b></p>
+                    <p>Die Grundlage für diese Analyse bilden verschiedene Geodaten und Kartendienste. Die Flächengrenzen der Ortsteile wurden vom <b><a href="https://www.geodaten.sachsen.de/downloadbereich-ortsteile-4346.html" target="_blank" rel="noopener">Staatsbetrieb Geobasisinformation und Vermessung Sachsen (GeoSN, dl-de/by-2-0)</a></b> als Open Data bezogen. Die zentralen Fernerkundungsdaten basieren auf den <b><a href="https://browser.dataspace.copernicus.eu/" target="_blank" rel="noopener">Contains modified Copernicus Sentinel data 2026</a></b> der European Space Agency (ESA).</p>
+				<p>Zur kartografischen Orientierung wurden Hintergrundkarten von <b><a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">© OpenStreetMap</a></b> sowie die <b><a href="https://www.arcgis.com/home/item.html?id=8b3d38c0819547faa83f7b7aca80bd76" target="_blank" rel="noopener">ESRI Gray (light) Basemap </a></b>(Quellen: Esri, TomTom, Garmin, FAO, NOAA, USGS und die GIS User Community) verwendet. Die ergänzende Deutschland Karte basiert auf einem Bild von <b><a href="https://pixabay.com/de/users/fetcroll-15404540/" target="_blank" rel="noopener">David Kacs</a></b> via <b><a href="https://pixabay.com/de/" target="_blank" rel="noopener">Pixabay</a></b>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="contact" class="parallax-section">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-12 col-sm-12">
+                    <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+                         <h2>Vernetzen wir uns!</h2><br>
+<p>Ein Projekt lebt vom Austausch. Ob du tiefergehende Fragen zu den verwendeten Satellitendaten haben, über die Zukunft der Dresdner Heide diskutieren möchten oder Unterstützung bei einer GIS-Analyse benötigen – ich freue mich auf deine Nachricht.</p>
+                    </div>
+               </div>
+               <div class="col-md-12 col-sm-12">
+                    <div class="wow fadeInUp" data-wow-delay="0.6s">
+                        <form action="mailto:hirschfranzi@web.de?subject=Anfrage über Dresdner Heide Webseite" method="post" enctype="text/plain" id="contact-form">
+                              <div class="col-md-6 col-sm-6">
+                                   <input type="text" class="form-control" name="name" placeholder="Name" required>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                   <input type="email" class="form-control" name="email" placeholder="E-Mail" required>
+                              </div>
+                              <div class="col-md-12 col-sm-12">
+                                   <textarea class="form-control" rows="5" name="message" placeholder="Nachricht" required></textarea>
+                              </div>
+                              <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+                                   <button id="submit" type="submit" class="form-control" name="submit">Nachricht senden</button>
+                              </div>
+                        </form>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+
+<footer id="footer" class="parallax-section">
+    <div class="container">
+        <div class="row">
+               <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.2s">
+                    <h4>GIS & GEO-Analyse</h4>
+                    <p>Diese Plattform präsentiert die Ergebnisse meiner Analyse zum Waldstrukturwandel in der Dresdner Heide. Mithilfe moderner Geoinformationssysteme (QGIS) werden komplexe Umweltdaten visualisiert und verständlich gemacht.</p>
+               </div>
+
+               <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.4s">
+                     <div class="support-cus">
+                         <h4>Adresse</h4>
+                         <p>Franziska Weiß <br>Am Trobischberg 20 <br>01109 Dresden</p>
+                    </div>
+                    <div class="support-cus">
+                         <h4>Kontakt</h4>
+                         <p>Tel: 0172 172 79 84</p>
+                    </div>
+               </div>
+
+               <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
+                    <h4>Mehr erfahren?</h4><br>
+                    <p>Hinterlasse mir gern deine E-Mail-Adresse und ich sende dir nähere Informationen zu.</p>
+                    <form class="newsletter" action="mailto:hirschfranzi@web.de" method="post" enctype="text/plain">
+                         <input name="email" type="email" class="form-control" placeholder="E-Mail Adresse" required>
+                         <button name="submit" class='form-control'>Infos anfordern</button>
+                    </form>
+               </div>
+
+               <div class="col-md-12 col-sm-12 clearfix">
+                    <div class="dash-line"></div>
+               </div>
+
+               <div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.8s">
+                    <p class="copyright-text">Copyright © 2026 Franziska Weiß 
+                    
+                    . Design: <a rel="nofollow" href="https://www.tooplate.com" title="HTML Templates">Tooplate</a>
+                    </p>
+                    <p>
+                        <a href="impressum.html">Impressum</a> | 
+                        <a href="datenschutz.html">Datenschutzerklärung</a>
+                    </p>
+               </div>
+
+               <div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="1s">
+                    <ul class="social-icon">
+                         <li><a href="https://www.linkedin.com/in/franziska-wei%C3%9F-7b094a397/" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+</footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.parallax.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/magnific-popup-options.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>
